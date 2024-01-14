@@ -6,8 +6,6 @@
   "scripts": {
     "start": "node cluster.js"
   },
-  "author": "Damien Arrachequesne <damien.arrachequesne@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@socket.io/sticky": "^1.0.0",
     "ioredis": "^4.22.0",
