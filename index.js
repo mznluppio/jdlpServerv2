@@ -1,9 +1,7 @@
 const httpServer = require("http").createServer();
 const Redis = require("ioredis");
 
-const redisClient = new Redis({
-  host: 'redis://red-cmi3nifqd2ns7380j710', port: 6379
-});
+const redisClient = new Redis("redis://red-cmi3nifqd2ns7380j710:6379");
 const Room = require('./room');
 
 const io = require("socket.io")(httpServer, {

@@ -21,8 +21,8 @@ if (cluster.isMaster) {
     loadBalancingMethod: "least-connection", // either "random", "round-robin" or "least-connection"
   });
   const PORT = process.env.PORT || 3000;
-
-  httpServer.listen(PORT, () =>
+  const HOSTNAME = process.env.HOSTNAME || 'localhost';
+  httpServer.listen(PORT, HOSTNAME, () =>
     console.log(`server listening at http://localhost:${PORT}`)
   );
 } else {
