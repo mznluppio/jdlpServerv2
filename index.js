@@ -79,7 +79,6 @@ io.on("connection", async (socket) => {
 
 
   socket.on(EVENTS.CREATE_ROOM, async (createdBy) => {
-    console.log(createdBy)
     const room = new Room(createdBy);
     roomStore.saveRoom(room.name, room);
     socket.join(room.name);
@@ -139,7 +138,6 @@ io.on("connection", async (socket) => {
       room._songs.push(songs);
       roomStore.saveRoom(roomData._name, room);
       socket.emit("response send song");
-      console.log(room);
       //MODIFIER LA LOGIQUE. IL FAUT VERIFIER SI AU MOINS TOUS LES JOUEURS ONT CHOISIS AU MOINS UN SON
       if (room._songs.length === room._players.length) {
         io.to(roomData._name).emit("all player send song", await roomStore.findRoom(roomData._name));
@@ -157,7 +155,6 @@ io.on("connection", async (socket) => {
 
   socket.on("want reveal player", async (data) => {
     const { player, roomData } = data;
-    console.log(player)
     let room = await roomStore.findRoom(roomData._name);
     if (room) {
       io.to(roomData._name).emit("reveal player", player);
