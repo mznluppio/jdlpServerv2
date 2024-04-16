@@ -5,7 +5,9 @@ const redisClient = new Redis("redis://red-cmi3nifqd2ns7380j710:6379");
 const Room = require('./room');
 
 const io = require("socket.io")(httpServer, {
-
+  cors: {
+    origin: "*",
+  },
   adapter: require("socket.io-redis")({
     pubClient: redisClient,
     subClient: redisClient.duplicate(),
